@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Given data
+years = np.array([1981, 1983, 1985, 1987, 1989, 1991, 1993, 1995, 1997, 1999])
+temperatures = np.array([14.1999, 14.2411, 14.0342, 14.2696, 14.197, 14.3055, 14.1853, 14.3577, 14.4187, 14.3438])
+
+# Perform least-square regression
+regression_coefficients = np.polyfit(years, temperatures, 1)
+regression_equation = np.poly1d(regression_coefficients)
+regression_temperatures = regression_equation(years)
+
+# Plotting
+plt.plot(years, temperatures, 'bo', label='Data points')
+plt.plot(years, regression_temperatures, 'r-', label='Regression line')
+plt.xlabel('Year')
+plt.ylabel('Temperature (°C)')
+plt.title('Relationship between Temperature and Year')
+plt.legend()
+plt.grid(True)
+plt.show()
